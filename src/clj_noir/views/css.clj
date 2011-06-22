@@ -74,7 +74,7 @@
           (rule "#step4"
                 :margin-top :190px)
           (rule "#desc"
-                :margin-top :50px)
+                :margin-top :35px)
           (rule "#footer"
                 :padding-bottom :40px
                 :float :left

@@ -52,7 +52,7 @@
              [:div.left (:welcome gists)]
              [:div.right
               [:p#desc "Noir is a micro-framework that allows you to rapidly develop websites in " (:clojure links) 
-               ". Designed to ensure fast iteration and maintainability, it provides a very simple and intuitive 
+               ". Designed to ensure fast iteration and maintainability, it provides a simple and intuitive 
                API to handle everything from defining pages and generating HTML to managing cookies and validating
                form input."]
               ]]
