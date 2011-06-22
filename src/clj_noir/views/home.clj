@@ -62,7 +62,7 @@
              [:div.left (:step1 gists)]
              [:div.right
               [:p "First, make sure you have " (:lein links) " installed. Now we'll get the " (:lein-noir links) " plugin
-                  and create a new noir project simply typing these commands into a shell. That's all it takes to get a
+                  and create a new noir project, simply by typing these commands into a shell. That's all it takes to get a
                   site up and running."]
               ]]
 
