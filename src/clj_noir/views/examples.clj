@@ -1,3 +1,26 @@
+(defpartial todo-item 
+            [{:keys [id title due-date]}]
+    [:li {:id id} ;; maps define HTML attributes
+        [:h3 title]
+        [:span.due due-date]]) ;; add a class
+
+(defpartial todos-list [items]
+    [:ul#todoItems ;; set the id attribute
+        (map todo-item items)])
+
+(todos-list [{:id "todo1"
+              :title "Get Milk"
+              :due-date "today"}])
+;; =>
+;; <ul id="todoItems">
+;;  <li id="todo1">
+;;    <h3>Get Milk</h3>
+;;    <span class="due">today</span>
+;;  </li>
+;; </ul>
+
+
+
 ;;Create a page that lists out all our todos
 (defpage "/todos" {}
          (let [items (all-todos)]
@@ -5,9 +28,8 @@
              [:h1 "Todo list!"]
              (todos-list items))))
 
-;; Handle posts to that page by adding a new todo 
-;; and returning a json object of the new todo as 
-;; the response
+;; Handle an HTTP POST to /todos, returning a json 
+;; object if successful
 (defpage [:post "/todos"] {:keys [title due]}
          (if-let [todo-id (add-todo title due)]
            (response/json {:id todo-id
@@ -40,12 +62,14 @@
              [:p "You created a cookie:"]
              [:p "Value " v])))
 
-;; use validation to show 
-(defpage "/valid" []
+;; validate our math, if the first statement
+;; is false, it fails validation and the error is
+;; added for the given key.
+(defpage "/validate" []
          (vali/rule (= 3 3)
-                    [:math "3 and 3 are not equal"])
+                    [:math "3 != 3"])
          (vali/rule (= 1 2)
-                    [:math "1 and 2 are not equal"])
+                    [:math "1 != 2"])
          (layout
            [:p "Let's check your math: "]
-           [:p (str (vali/errors? :math))]))
+           [:p (str (vali/get-errors :math))]))

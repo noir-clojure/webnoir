@@ -53,7 +53,8 @@
              [:div.right
               [:p#desc "Noir is a micro-framework that allows you to rapidly develop websites in " (:clojure links) 
                ". Designed to ensure fast iteration and maintainability, it provides a very simple and intuitive 
-               API to define pages and create HTML generating \"partials\"."]
+               API to handle everything from defining pages and generating HTML to managing cookies and validating
+               form input."]
               ]]
             ]
            [:h2#started (image "/img/started.png" "Getting Started")]
@@ -61,17 +62,16 @@
             [:li
              [:div.left (:step1 gists)]
              [:div.right
-              [:p "First, make sure you have " (:lein links) " installed. Now we'll get the " (:lein-noir links) " plugin
-                  and create a new noir project, simply by typing these commands into a shell. That's all it takes to get a
-                  site up and running."]
+              [:p "First, make sure you have " (:lein links) " installed. Then we'll get the " (:lein-noir links) " plugin
+                  and create a new noir project. Those four shell commands get your site up and running."]
               ]]
 
             [:li
              [:div.left
-              [:p#step2 "Now you're ready to start making your site a bit more interesting. Noir uses " (:hiccup links) "
-               to generate HTML. It's pretty simple; html elements are represented by vectors where the first keyword
-               is the name of the tag you want. To define a function that returns HTML, you can use the (defpartial) 
-               macro. Here's an example that generates a list of todos."]
+              [:p#step2 "Now let's make it do something. Noir uses " (:hiccup links) " to generate HTML. 
+               It's pretty simple; html elements are represented by vectors where the first keyword
+               is the name of the tag you want and the rest is the content. To define a function that returns 
+               HTML, you can use the (defpartial) macro. Here's an example that generates a list of todos."]
               ]
              [:div.right (:step2 gists)]]
 
@@ -79,17 +79,16 @@
              [:div.left (:step3 gists)]
              [:div.right
               [:p#step2 "So we've created some html functions, but we need to define some pages that use them.
-                        Noir is built on top of " (:ring links) " and " (:compojure links) ", which help deal with
-                        the boilerplate necessary to handle HTTP requests and responses. By using the (defpage) macro 
-                        we can define what happens when someone accesses a given url. First you define the \"route\"
-                        (the url) and are then given a chance to destructure the parameters of the request. These params
-                        contain all the GET/POST information from the HTTP request, as well as any route parameters you
-                        may have defined. From there, you just return the content that you want the response to have."]
+                        Noir is built on top of " (:ring links) " and " (:compojure links) ", which take care of
+                        handling HTTP requests and responses. By using the (defpage) macro we can define what happens 
+                        when someone accesses a given url. You define the \"route\" and supply 
+                        a destructuring form for the parameters of the request, which contain the GET/POST values 
+                        as well as route parameters you define. The rest is simply the content of the response."]
               ]]
 
             [:li
              [:div.left
-              [:p#step4 "Those are the basics of what Noir helps you with, but it also provides ways for you interact
+              [:p#step4 "Those are the basics of what Noir helps you with, but it also provides ways for you to interact
                   with sessions, cookies, validation and more. Take a look at the " (:tutorial links) " and the " 
                   (:api links) " documentation for more information. Now go build some websites!"]]
               [:div.right (:step4 gists)]

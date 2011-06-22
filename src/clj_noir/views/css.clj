@@ -70,7 +70,7 @@
                       :font-size :24px
                       :text-align :center))
           (rule "#step2"
-                :margin-top :90px)
+                :margin-top :110px)
           (rule "#step4"
                 :margin-top :190px)
           (rule "#desc"
