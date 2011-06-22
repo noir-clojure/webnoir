@@ -23,6 +23,9 @@ a {
 a:hover {
   color: #6bffbd;
 }
+em {
+  color: #6bffbd;
+}
 h1 {
   float: left;
   display: inline;
@@ -65,7 +68,7 @@ p a {
   margin-top: 190px;
 }
 #desc {
-  margin-top: 35px;
+  margin-top: 45px;
 }
 #footer {
   padding-bottom: 40px;
@@ -137,6 +140,10 @@ ul.start li p {
   padding: 0;
   margin: 0;
   font-size: 18px;
+}
+
+ul.start li p + p {
+  margin-top: 15px;
 }
 
 ul.start li .gist {

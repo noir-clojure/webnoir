@@ -44,6 +44,8 @@
                 (rule "&:hover"
                 emphasis
                       ))
+          (rule "em"
+                emphasis)
           (rule "h1"
                 fldi
                 :margin-bottom :0px
@@ -74,7 +76,7 @@
           (rule "#step4"
                 :margin-top :190px)
           (rule "#desc"
-                :margin-top :35px)
+                :margin-top :45px)
           (rule "#footer"
                 :padding-bottom :40px
                 :float :left
@@ -122,6 +124,8 @@
                             :margin 0
                             :font-size :18px
                             )
+                      (rule "p + p"
+                            :margin-top :15px)
                       (rule ".gist"
                             :width "100%")
 

@@ -1,8 +1,13 @@
-(defpartial todo-item 
-            [{:keys [id title due-date]}]
+(defpage "/welcome" []
+    "Welcome to Noir!")
+
+(server/start 8080 {})
+
+
+(defpartial todo-item [{:keys [id title due]}]
     [:li {:id id} ;; maps define HTML attributes
         [:h3 title]
-        [:span.due due-date]]) ;; add a class
+        [:span.due due]]) ;; add a class
 
 (defpartial todos-list [items]
     [:ul#todoItems ;; set the id attribute
@@ -10,7 +15,7 @@
 
 (todos-list [{:id "todo1"
               :title "Get Milk"
-              :due-date "today"}])
+              :due "today"}])
 ;; =>
 ;; <ul id="todoItems">
 ;;  <li id="todo1">
