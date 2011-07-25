@@ -52,7 +52,17 @@ namespace.
   <h1 class="nopad">Table of Contents</h1>
   <div style="margin-left: 1em;" class="toc-section">
     <a href="#toc0">Overview</a>
-    
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#noir.util.test/has-body">has-body</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#noir.util.test/has-content-type">has-content-type</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#noir.util.test/has-status">has-status</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#noir.util.test/send-request">send-request</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#noir.util.test/with-noir">with-noir</a>
+    </div>
     <br />
   </div>
 </div>
@@ -67,12 +77,68 @@ namespace.
   (:require <span id="long-name">noir.util.test</span>))
 </pre><pre>
 </pre><h2>Overview</h2>
-<pre id="namespace-docstr"></pre>
+<pre id="namespace-docstr">A set of utilities for testing a Noir project</pre>
 
 
 <br />
 <h2>Public Variables and Functions</h2>
-
+<div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="noir.util.test/has-body">has-body</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (has-body resp cont)
+</pre>
+  <pre id="var-docstr">Asserts that the response has the given body</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="noir.util.test/has-content-type">has-content-type</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (has-content-type resp ct)
+</pre>
+  <pre id="var-docstr">Asserts that the response has the given content type</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="noir.util.test/has-status">has-status</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (has-status resp stat)
+</pre>
+  <pre id="var-docstr">Asserts that the response has the given status</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="noir.util.test/send-request">send-request</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (send-request route &amp; [params])
+</pre>
+  <pre id="var-docstr">Send a request to the Noir handler. Unlike with-noir, this will run
+the request within the context of all middleware.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="noir.util.test/with-noir">with-noir</h2>
+  <span id="var-type">macro</span><br />
+  <pre id="var-usage">Usage: (with-noir &amp; body)
+</pre>
+  <pre id="var-docstr">Executes the body within the context of Noir's bindings</pre>
+  
+  
+  
+</div>
 
 
 </div>
