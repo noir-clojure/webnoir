@@ -7,7 +7,7 @@
  .gist-syntax .c { color:#00ffff; font-style:normal; } /* Comment */
  .gist-syntax .cm { color:#00ffff; font-style:normal; } /* Comment.Multiline */
  .gist-syntax .cp { color:#00ffff; font-style:normal; } /* Comment.Preproc */
- .gist-syntax .c1 { color:#8ac !important; font-style:normal; } /* Comment.Single */
+ .gist-syntax .c1 { color:#677C99 !important; font-style:normal; } /* Comment.Single */
  .gist-syntax .cs { color:#00ffff; font-style:normal; } /* Comment.Special */
 
  .gist-syntax .k { color:#6bffbd !important; font-weight:bold; } /* Keyword */
@@ -48,7 +48,7 @@
  .gist-syntax .sx { color: #00ee00 } /* Literal.String.Other */
  .gist-syntax .sr { color: #00ee00 } /* Literal.String.Regex */
  .gist-syntax .s1 { color: #00ee00 } /* Literal.String.Single */
- .gist-syntax .ss { color: #00ee00 } /* Literal.String.Symbol */
+ .gist-syntax .ss { color: #ddd !important; } /* Literal.String.Symbol */
 
  .gist-syntax .na { color: #008080 } /* Name.Attribute */
  .gist-syntax .nb { color:#6bfffd !important } /* Name.Builtin */

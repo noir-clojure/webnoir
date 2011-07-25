@@ -1,4 +1,4 @@
-(ns clj-noir.views.css
+(ns webnoir.views.css
   (:use cssgen.use
         cssgen))
 
@@ -19,9 +19,12 @@
 (def dark-box (mixin box
                       :background :#474949
                       :border [:2px :solid :#515353]))
+
+(def emph-colors (mixin :background :#3f634d
+                        :border [:2px :solid :#3c8455]))
+
 (def emph-box (mixin box
-                     :background :#3f634d
-                     :border [:2px :solid :#3c8455]))
+                     emph-colors))
 
 
 (css-file "resources/public/css/noir.css"
@@ -63,14 +66,59 @@
           (rule "#started"
                 :padding-top :70px
                 :margin-bottom :30px)
+          (rule "#tutorialContent"
+                :margin-left :150px
+                :width :700px
+                (rule "blockquote"
+                      de-emph
+                      :margin [:30px 0]
+                      :font-style :italic
+                      :width :550px
+                      :margin-left :50px)
+                (rule ".gist"
+                      :margin [:30px 0])
+                (rule "p"
+                      :margin-bottom :15px)
+                (rule "h2"
+                      :display :block
+                      :margin [:15px 0]))
           (rule "#tutorials"
                 fldi
-                :margin-top :60px
-                :margin-left :170px
+                :width :800px
+                :margin-left :90px
+                (rule "ul"
+                      fldi
+                      :width "100%"
+                      :list-style :none
+                      :margin-bottom :20px
+                      (rule "li"
+                            fldi
+                            :width "100%"
+                            :margin-bottom :30px
+                            :margin-right :20px
+                            (rule "p"
+                                  fldi
+                                  de-emph
+                                  :margin-top :10px
+                                  :max-width :450px)
+                            (rule "a"
+                                  dark-box
+                                  fldi
+                                  :text-align :center
+                                  :width :250px
+                                  :margin-right :40px
+                                  :font-size :18px
+                                  :border-radius :8px
+                                  :padding :20px
+                                  (rule "&:hover"
+                                        emph-colors
+                                        ))))
+                            
                 (rule "h3"
-                      :margin-bottom :10px
-                      :font-size :24px
-                      :text-align :center))
+                      fldi
+                      :width "100%"
+                      :margin-bottom :20px
+                      :font-size :28px))
           (rule "#step2"
                 :margin-top :110px)
           (rule "#step4"
@@ -106,12 +154,14 @@
                       :margin-top :30px
                       (rule "li"
                             fldi
-                      (rule "a"
-                            fldi
-                            light-box
-                            :padding :8px
-                            :margin-left :10px)))
-                )
+                            (rule "a"
+                                  fldi
+                                  light-box
+                                  :padding :8px
+                                  :margin-left :10px
+                                  (rule "&:hover"
+                                        emph-colors
+                                        )))))
           (rule "ul.start"
                 (rule "li"
                       fldi
