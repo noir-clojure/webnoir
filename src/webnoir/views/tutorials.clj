@@ -16,7 +16,8 @@
 (def examples [{:url "https://github.com/ibdknox/Noir-blog" :title "Noir Blog" :desc "A completely functional blog written from the ground up in Noir"}
                {:url "http://thecomputersarewinning.com/post/clojure-heroku-noir-mongo" :title "Noir on Heroku" :desc "A simple example of getting Noir up on Heroku with a connection to MongoDB as well - by Ignacio Thayer."}])
 
-(def docs [{:version "1.2.0" :title "Noir 1.2.0"}
+(def docs [{:version "1.2.1" :title "Noir 1.2.1"}
+           {:version "1.2.0" :title "Noir 1.2.0"}
            {:version "1.1.0" :title "Noir 1.1.0"}
            {:version "1.0.0" :title "Noir 1.0.0"}])
 
