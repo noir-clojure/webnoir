@@ -76,3 +76,4 @@
 
  .gist-syntax .p { color:#999; } /* paren */
 
+ .gist-syntax .kd { color:#6bffbd !important; font-weight:normal !important; } /* Keyword.Declaration */
