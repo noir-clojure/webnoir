@@ -17,7 +17,7 @@
                    {:url "/tutorials" :text "Tutorials"}
                    {:url "http://groups.google.com/group/clj-noir" :text "Google Group"}
                    {:url "/docs/" :text "API"}
-                   {:url "https://github.com/ibdknox/noir" :text "Src"}])
+                   {:url "https://github.com/noir-clojure/noir" :text "Src"}])
 
 (defpartial link [{:keys [url text]}]
             (link-to url text))
