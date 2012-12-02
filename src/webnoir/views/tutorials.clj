@@ -1,7 +1,7 @@
-(ns webnoir.views.tutorials
-  (:use noir.core
-        hiccup.page-helpers)
-  (:require [webnoir.views.common :as common]
+(ns webnoir.views.tutorials 
+  (:require [noir.core :refer [defpartial defpage]]
+            [hiccup.element :refer [link-to]]
+            [webnoir.views.common :as common]
             [webnoir.models.tutorial :as tut]))
 
 (def tutorials [

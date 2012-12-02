@@ -1,6 +1,6 @@
 (ns webnoir.models.tutorial
-  (:use clj-markdown.core
-        clojure.java.io))
+  (:require [markdown :refer [md-to-html-string]]
+            [clojure.java.io :refer [file]]))
 
 (def compiled-tutorials (atom {}))
 
@@ -18,7 +18,7 @@
     (doseq [tut files]
       (let [{file-name :name} (file->name tut)
             file-contents (slurp tut)]
-        (swap! compiled-tutorials assoc file-name (md->html file-contents))))))
+        (swap! compiled-tutorials assoc file-name (md-to-html-string file-contents))))))
 
 (defn get-tutorial [id]
   (get @compiled-tutorials id))

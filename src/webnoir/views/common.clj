@@ -1,7 +1,7 @@
 (ns webnoir.views.common
-  (use noir.core
-       hiccup.core
-       hiccup.page-helpers))
+  (:require [noir.core :refer [defpartial]]
+            [hiccup.page :refer [html5 include-css]]
+            [hiccup.element :refer [link-to image]]))
 
 (def links {:api (link-to "/docs/index.html" "API")
             :tutorial (link-to "/tutorials" "tutorials")
@@ -20,22 +20,22 @@
                    {:url "https://github.com/ibdknox/noir" :text "Src"}])
 
 (defpartial link [{:keys [url text]}]
-            (link-to url text))
+  (link-to url text))
 
 (defpartial link-item [lnk]
-            [:li
-             (link lnk)])
+  [:li
+   (link lnk)])
 
 (defpartial logo []
-            (link-to "/" (image "/img/noir-logo.png" "Noir")))
+  (link-to "/" (image "/img/noir-logo.png" "Noir")))
 
 (defpartial header []
-            [:div#header 
-             [:h1 (logo)]
-             [:ul
-              (map link-item header-links)]
-             [:h2 "The Clojure web framework"]
-             ])
+  [:div#header 
+   [:h1 (logo)]
+   [:ul
+    (map link-item header-links)]
+   [:h2 "The Clojure web framework"]
+   ])
 
 (def analytics "
 <script type=\"text/javascript\">
@@ -53,20 +53,20 @@
 </script>")
 
 (defpartial footer []
-            [:div#footer
-             [:p "Copyright © 2011 " (link-to "http://chris-granger.com" "Chris Granger") ". All rights reserved."]])
+  [:div#footer
+   [:p "Copyright © 2011 " (link-to "http://chris-granger.com" "Chris Granger") ". All rights reserved."]])
 
 (defpartial layout [& content]
-            (html5
-              [:head
-               [:title "Noir"]
-               (include-css "/css/reset.css")
-               (include-css "/css/noir.css")
-               (include-css "/css/gist.css")
-               analytics]
-              [:body
-               [:div#wrapper
-                [:div#content
-                 content]
-                (footer)]]))
+  (html5
+   [:head
+    [:title "Noir"]
+    (include-css "/css/reset.css")
+    (include-css "/css/noir.css")
+    (include-css "/css/gist.css")
+    analytics]
+   [:body
+    [:div#wrapper
+     [:div#content
+      content]
+     (footer)]]))
 
