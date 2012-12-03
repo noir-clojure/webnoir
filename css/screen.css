@@ -14,7 +14,7 @@ body {
   display: inline;
   width: 100%;
   min-height: 480px;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
 }
 a {
   text-decoration: none;
@@ -50,11 +50,11 @@ p a {
   padding-top: 70px;
   margin-bottom: 30px;
 }
-#tutorialContent {
+.tutorialContent {
   margin-left: 150px;
   width: 700px;
 }
-#tutorialContent blockquote {
+.tutorialContent blockquote {
   color: #91979d;
   margin: 30px 0;
   font-style: italic;
@@ -62,15 +62,15 @@ p a {
   margin-left: 50px;
 }
 
-#tutorialContent .gist {
+.tutorialContent .highlight {
   margin: 30px 0;
 }
 
-#tutorialContent p {
+.tutorialContent p {
   margin-bottom: 15px;
 }
 
-#tutorialContent h2 {
+.tutorialContent h2 {
   display: block;
   margin: 15px 0;
 }
@@ -138,20 +138,12 @@ p a {
   margin-top: 45px;
 }
 #footer {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   float: left;
   display: inline;
   width: 100%;
   text-align: center;
-}
-code {
-  float: left;
-  display: inline;
-  border-radius: 8px;
-  padding: 10px;
-  background: #474949;
-  border: 2px solid #616363;
-  font-family: Monaco, Consolas, 'Courier New';
+  padding-top:70px;
 }
 #header {
   float: left;
@@ -217,7 +209,7 @@ ul.start li p + p {
   margin-top: 15px;
 }
 
-ul.start li .gist {
+ul.start li .highlight {
   width: 100%;
 }
 
@@ -233,3 +225,6 @@ ul.start li .left {
   display: inline;
   width: 45%;
 }
+
+.lost { height:400px; padding:100px 0; }
+.lost h2 { text-align:center; }

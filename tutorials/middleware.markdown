@@ -1,3 +1,8 @@
+---
+layout: default
+class: tutorialContent
+---
+
 ##The man in the middle
 What is middleware? Well, here's a quote from the [Ring Concepts][] doc:
 
@@ -11,7 +16,18 @@ that gets applied to requests before they get routed and after they a response i
 
 Let's look at a practical example: enabling utf-8 characters in all of our responses. Noir includes a middleware
 function to do exactly that, and it looks like this:
-<script src="https://gist.github.com/1103525.js?file=utf8.clj"></script>
+
+{% highlight clojure %}
+(defn wrap-utf-8 
+  "Adds the 'charset=utf-8' clause onto the content type declaration, 
+  allowing pages to display all utf-8 characters."
+  [handler]
+  (fn [request]
+    (let [resp (handler request)
+          ct (get-in resp [:headers "Content-Type"])
+          neue-ct (str ct "; charset=utf-8")]
+      (assoc-in resp [:headers "Content-Type"] neue-ct))))
+{% endhighlight %}
 
 So as you can see, we're returning a new handler function that takes in the request map and then calls the next handler
 to get a response. Once it has the response it gets the "Content-Type" header and appends "; charset=utf-8" onto it and
@@ -21,7 +37,11 @@ form of returning an anonymous function that takes in a request and returns a re
 is ring itself.
 
 To add a custom piece of middleware to noir, all you have to do is:
-<script src="https://gist.github.com/1103525.js?file=add.clj"></script>
+
+{% highlight clojure %}
+(server/add-middleware my-middleware)
+{% endhighlight %}
+
 
 ##So when do I use it?
 Anytime you need to modify requests or responses at a level beyond simply modifying status codes or bodies, 

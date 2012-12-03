@@ -1,3 +1,8 @@
+---
+layout: default
+class: tutorialContent
+---
+
 ##How in the world does this thing work?
 That's the question we're going to set out to answer, but in order to do so, we need to understand a little bit about how the internet works.
 

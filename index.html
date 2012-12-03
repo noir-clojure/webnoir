@@ -1,0 +1,169 @@
+---
+layout: default
+---
+
+<ul class="start">
+    <li>
+    <div class="left">
+        {% highlight clojure %}
+(ns my-app
+  (:use noir.core)
+  (:require [noir.server :as server]))
+
+(defpage "/welcome" []
+  "Welcome to Noir!")
+
+(server/start 8080){% endhighlight %}
+
+    </div>
+
+    <div class="right">
+        <p id="desc">Noir is a micro-framework that allows you to rapidly develop
+        websites in <a href="http://clojure.org">Clojure</a>.</p>
+
+        <p>And it couldn't be any <em>simpler</em>.</p>
+    </div>
+    </li>
+</ul>
+
+<h2 id="started"><img alt="Getting Started" src="/img/started.png" /></h2>
+
+<ul class="start">
+    <li>
+    <div class="left">
+        {% highlight bash %}
+lein plugin install lein-noir 1.2.1
+lein noir new my-website
+cd my-website
+lein run{% endhighlight %}
+    </div>
+
+    <div class="right">
+        <p>Make sure you have <a href=
+            "https://github.com/technomancy/leiningen">leiningen</a> installed, that way
+        we can use the <a href="https://github.com/ibdknox/lein-noir">lein-noir</a>
+        plugin to create a new noir project. Four commands later, your site is up and
+        running.</p>
+    </div>
+    </li>
+
+    <li>
+    <div class="left">
+        <p id="step2">Now let's make it do something. Noir uses <a href=
+            "https://github.com/weavejester/hiccup">Hiccup</a> to generate HTML. Hiccup
+        represents html elements as vectors where the first keyword is the name of
+        the tag and everything else is the content. With Noir you can define
+        functions that return HTML by using the (defpartial) macro. The code to the
+        right, for example, shows how you could generate an unordered list of
+        todos.</p>
+    </div>
+
+    <div class="right">
+        {% highlight clojure %}
+(defpartial todo-item [{:keys [id title due]}]
+    [:li {:id id} ;; maps define HTML attributes
+        [:h3 title]
+        [:span.due due]]) ;; add a class
+
+(defpartial todos-list [items]
+    [:ul#todoItems ;; set the id attribute
+        (map todo-item items)])
+
+(todos-list [{:id "todo1"
+              :title "Get Milk"
+              :due "today"}])
+;; =>
+;; <ul id="todoItems">
+;;  <li id="todo1">
+;;    <h3>Get Milk</h3>
+;;    <span class="due">today</span>
+;;  </li>
+;; </ul>{% endhighlight %}
+
+    </div>
+    </li>
+
+    <li>
+    <div class="left">
+        {% highlight clojure %}
+;;Create a page that lists out all our todos
+(defpage "/todos" {}
+         (let [items (all-todos)]
+           (layout
+             [:h1 "Todo list!"]
+             (todos-list items))))
+
+;; Handle an HTTP POST to /todos, returning a 
+;; json object if successful
+(defpage [:post "/todos"] {:keys [title due]}
+         (if-let [todo-id (add-todo title due)]
+           (response/json {:id todo-id
+                           :title title
+                           :due-date due})
+           (response/empty)))
+
+;; We can define route params too by making them
+;; a keyword: /some/route/:param-name
+(defpage "/todo/remove/:id" {todo-id :id}
+         (if (remove-todo todo-id)
+           (response/json {:id todo-id})
+           (response/empty))){% endhighlight %}
+
+    </div>
+
+    <div class="right">
+        <p id="step2">We've created some html functions, but we need to define some
+        pages that use them. Noir is built on top of <a href=
+            "https://github.com/mmcgrana/ring">Ring</a> and <a href=
+            "https://github.com/weavejester/compojure">Compojure</a>, which take care of
+        handling HTTP requests and responses. The (defpage) macro extends these with
+        a simple way to define what happens when someone accesses a given url. You
+        just pass it a "route" and supply a destructuring form for the parameters of
+        the request (basically, the GET or POST values). The rest is then evaluated
+        as the content of the response.</p>
+    </div>
+    </li>
+
+    <li>
+    <div class="left">
+        <p id="step4">This shows you the basics of Noir, but it provides much more
+        than what you see here. Eveything you need to build production ready websites
+        is included: from session and cookie handling to validation and custom status
+        pages. Take a look at the <a href="/tutorials">tutorials</a> and the <a href=
+            "/docs/index.html">API</a> documentation...</p>
+
+        <p><em>and then go build some websites!</em></p>
+    </div>
+
+    <div class="right">
+        {% highlight clojure %}
+;; add a value to the session
+(defpage "/login" {}
+         (session/put! :admin true)
+         (layout
+           [:p "Are you loggedin? "] 
+           [:p (session/get :admin)]))
+
+;; set a cookie and get its value
+(defpage "/cookie" []
+         (cookie/put! :noir "stuff")
+         (let [v (cookie/get :noir)]
+           (layout
+             [:p "You created a cookie:"]
+             [:p "Value " v])))
+
+;; validate our math, if the first statement
+;; is false, it fails validation and the error 
+;; is added for the given key.
+(defpage "/validate" []
+         (vali/rule (= 3 3)
+                    [:math "3 != 3"])
+         (vali/rule (= 1 2)
+                    [:math "1 != 2"])
+         (layout
+           [:p "Let's check your math: "]
+           [:p (str (vali/get-errors :math))])){% endhighlight %}
+
+    </div>
+    </li>
+</ul>
