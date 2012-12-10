@@ -7,8 +7,8 @@ layout: default
     <div class="left">
         {% highlight clojure %}
 (ns my-app
-  (:use noir.core)
-  (:require [noir.server :as server]))
+  (:require [noir.server :as server]
+            [noir.core :refer [defpage defpartial]]))
 
 (defpage "/welcome" []
   "Welcome to Noir!")
@@ -32,18 +32,19 @@ layout: default
     <li>
     <div class="left">
         {% highlight bash %}
-lein plugin install lein-noir 1.2.1
-lein noir new my-website
+lein new noir my-website
 cd my-website
 lein run{% endhighlight %}
     </div>
 
     <div class="right">
         <p>Make sure you have <a href=
-            "https://github.com/technomancy/leiningen">leiningen</a> installed, that way
-        we can use the <a href="https://github.com/ibdknox/lein-noir">lein-noir</a>
-        plugin to create a new noir project. Four commands later, your site is up and
-        running.</p>
+            "https://github.com/technomancy/leiningen">leiningen</a> installed,
+          that way we can use the Noir template. You do not have to download
+          anything special to use it, just run the command and leiningen will
+          automatically fetch whatever you need! Three commands later, you've
+          got a working website!
+        </p>
     </div>
     </li>
 
