@@ -28,8 +28,12 @@ stateful way. These functions are found in the noir.session namespace and behave
 {% endhighlight %}
 
 As of 1.1.0, Noir also has flashing, which is typically used to store a simple message across redirects. For example, if
-you redirect after a user is created, you would show the message "User added" on the user listings page. Note that flashes
-in Noir have the lifetime of one retrieval, meaning that after the first (flash-get) the value will be nil.
+you redirect after a user is created, you would show the message "User added" on
+the user listings page. Note that old versions of Noir had flashes that had a
+lifetime of one retrieval, meaning that after the first (flash-get) the value
+will be nil. The flashes in the newer versions last for one *request*, meaning
+you can refer to it multiple times during that one request and on the next
+request it will be gone.
 
 {% highlight clojure %}
 (session/flash-put! "User added!")
