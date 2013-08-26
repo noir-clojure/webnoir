@@ -226,5 +226,9 @@ ul.start li .left {
   width: 45%;
 }
 
+.deprecated { background:#870F34; color:#FFCCDC; border-radius:5px; padding:20px; border:2px solid #F01B5B; width:100%;  margin-bottom:50px; float:left; display:inline; }
+.deprecated h2 { color: #FF7FA7; font-size:20pt; }
+.deprecated a { color: #FF7FA7; }
+
 .lost { height:400px; padding:100px 0; }
 .lost h2 { text-align:center; }

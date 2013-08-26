@@ -94,7 +94,7 @@ lein run{% endhighlight %}
              [:h1 "Todo list!"]
              (todos-list items))))
 
-;; Handle an HTTP POST to /todos, returning a 
+;; Handle an HTTP POST to /todos, returning a
 ;; json object if successful
 (defpage [:post "/todos"] {:keys [title due]}
          (if-let [todo-id (add-todo title due)]
@@ -142,7 +142,7 @@ lein run{% endhighlight %}
 (defpage "/login" {}
          (session/put! :admin true)
          (layout
-           [:p "Are you loggedin? "] 
+           [:p "Are you loggedin? "]
            [:p (session/get :admin)]))
 
 ;; set a cookie and get its value
@@ -154,7 +154,7 @@ lein run{% endhighlight %}
              [:p "Value " v])))
 
 ;; validate our math, if the first statement
-;; is false, it fails validation and the error 
+;; is false, it fails validation and the error
 ;; is added for the given key.
 (defpage "/validate" []
          (vali/rule (= 3 3)
